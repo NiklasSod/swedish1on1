@@ -3,7 +3,7 @@
     "name": "swedish1on1",
     "slug": "swedish1on1",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "sensor",
     "icon": "./assets/images/icon.png",
     "scheme": "swedish1on1",
     "userInterfaceStyle": "automatic",
