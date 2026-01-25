@@ -37,15 +37,6 @@ const buttonTextStyles: { buttonText: TextStyle } = {
   },
 };
 
-export const iconStyles = StyleSheet.create({
-  icon: {
-    width: 200,
-    height: 200,
-    margin: 40,
-    
-  },
-});
-
 export const homeStyles = StyleSheet.create({
   ...containerStyles,
   ...textStyles,

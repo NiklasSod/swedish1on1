@@ -1,10 +1,10 @@
 import { Image } from 'react-native';
-import { iconStyles } from './index.styles';
+import { iconStyles } from './LoginIcon.styles';
 
 export default function LoginIcon() {
   return (
     <Image
-      source={require('./login_icon.jpg')}
+      source={require('../../assets/images/LoginIcon.jpg')}
       style={iconStyles.icon}
     />
   )
