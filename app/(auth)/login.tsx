@@ -1,5 +1,6 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
+import LogoIcon from "../../components/LogoIcon/LogoIcon";
 import { useT } from "../../locales/i18n";
 
 export default function AuthLayout() {
@@ -8,11 +9,12 @@ export default function AuthLayout() {
   const roleLower = typeof role === "string" ? role.toLowerCase() : "";
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
+      <LogoIcon />
       <Text>{t("loginTitle", { roleLower })}</Text>
       <Pressable onPress={() => router.push(`./register?role=${role}`)}>
         <Text>{t("registerLink", { roleLower })}</Text>
       </Pressable>
-    </View>
+    </ScrollView>
   );
 }

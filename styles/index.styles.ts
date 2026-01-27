@@ -1,10 +1,11 @@
 import { StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { COLORS } from "./colors";
 
 const containerStyles: { container: ViewStyle } = {
   container: {
     flexGrow: 1,
     alignItems: "center",
-    backgroundColor: "#d3effeff",
+    backgroundColor: COLORS.background,
   },
 };
 
@@ -13,7 +14,7 @@ const textStyles: { text: TextStyle } = {
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
-    color: "black",
+    color: COLORS.text,
   },
 };
 
@@ -30,8 +31,8 @@ const buttonTextStyles: { buttonText: TextStyle } = {
   buttonText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "black",
-    backgroundColor: "#a0d8ef",
+    color: COLORS.button.text,
+    backgroundColor: COLORS.button.background,
     borderRadius: 30,
     padding: 20
   },
