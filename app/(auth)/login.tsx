@@ -1,6 +1,6 @@
 import { router, useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import LogoIcon from "../../components/LogoIcon/LogoIcon";
+import LogoIcon from "../../components/LogoIcon";
 import { useT } from "../../locales/i18n";
 
 export default function AuthLayout() {

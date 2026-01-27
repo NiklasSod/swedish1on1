@@ -38,9 +38,18 @@ const buttonTextStyles: { buttonText: TextStyle } = {
   },
 };
 
+const iconStyles = StyleSheet.create({
+  icon: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+  },
+});
+
 export const homeStyles = StyleSheet.create({
   ...containerStyles,
   ...textStyles,
   ...buttonStyles,
   ...buttonTextStyles,
+  ...iconStyles
 });

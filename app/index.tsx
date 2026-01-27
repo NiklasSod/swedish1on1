@@ -1,19 +1,24 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
-import LogoIcon from "../components/LogoIcon/LogoIcon";
+import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
+import LogoIcon from "../components/LogoIcon";
 import LogoText from "../components/LogoText/LogoText";
 import { homeStyles } from "../styles/index.styles";
 import { useT } from "../locales/i18n";
 
+
 export default function Index() {
   const router = useRouter();
   const t = useT("");
+
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+
   return (
     <ScrollView
       scrollEnabled={true}
       contentContainerStyle={homeStyles.container}
     >
-      <LogoIcon />
+      <LogoIcon style={[homeStyles.icon, { marginTop: isLandscape ? 10 : 50 }]} />
       <LogoText />
       <Text style={homeStyles.text}>
         {t("startPage.welcomeText")}
