@@ -1,0 +1,13 @@
+{
+  "student": "Student",
+  "teacher": "Teacher",
+  "startPage": {
+    "welcomeText": "Welcome.\nAre you a Student or Teacher?"
+  },
+  "auth": {
+    "loginTitle": "Welcome {{roleLower}}",
+    "registerLink": "Create account as a {{roleLower}}",
+    "registerTitle": "Register Page for {{roleLower}}",
+    "registerButton": "Register as {{roleLower}}"
+  }
+}

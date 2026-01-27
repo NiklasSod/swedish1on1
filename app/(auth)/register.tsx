@@ -5,10 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registerStyles } from "../../styles/register.styles";
 import InputField from "../../components/InputField/InputField";
 import { registerSchema, RegisterFormValues } from "../../schemas/auth";
+import { useT } from "../../locales/i18n";
 
 const RegisterPage = () => {
     const { role } = useLocalSearchParams();
-    const userRole = role ?? "student";
+    const roleLower = typeof role === "string" ? role.toLowerCase() : "";
+    const t = useT("auth");
 
     const { control, handleSubmit, formState: { errors } } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -21,12 +23,12 @@ const RegisterPage = () => {
   });
 
   const onRegister = (data: RegisterFormValues) => {
-    console.log(`Registering ${data.username} as a ${userRole}`, data);
+    console.log(`Registering ${data.username} as a ${roleLower}`, data);
   };
   
   return (
     <ScrollView contentContainerStyle={registerStyles.container}>
-      <Text>Register Page for {userRole}</Text>
+      <Text>{t("registerTitle", { roleLower })}</Text>
 
       {/* Username Field */}
       <Controller
@@ -91,7 +93,7 @@ const RegisterPage = () => {
       />
 
       <Pressable onPress={handleSubmit(onRegister)}>
-        <Text style={registerStyles.buttonText}>Register as {userRole}</Text>
+        <Text style={registerStyles.buttonText}>{t("registerButton", { roleLower })}</Text>
       </Pressable>
     </ScrollView>
   );

@@ -1,0 +1,13 @@
+{
+  "student": "Student",
+  "teacher": "Lärare",
+  "startPage": {
+    "welcomeText": "Välkommen.\nÄr du student eller lärare?"
+  },
+  "auth": {
+    "loginTitle": "Välkommen {{roleLower}}",
+    "registerLink": "Skapa konto som {{roleLower}}",
+    "registerTitle": "Registreringssida för {{roleLower}}",
+    "registerButton": "Registrera dig som {{roleLower}}"
+  }
+}
