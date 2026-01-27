@@ -1,11 +1,12 @@
-import { Image } from 'expo-image';
+import { Image as ExpoImage } from 'expo-image';
 import { imageStyles } from './LogoText.styles';
 
 export default function LogoText() {
   return (
-    <Image
+    <ExpoImage
       source={require('../../assets/images/LogoText.png')}
       style={imageStyles.image}
+      contentFit="contain"
     />
   )
 }
