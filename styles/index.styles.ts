@@ -46,10 +46,19 @@ const iconStyles = StyleSheet.create({
   },
 });
 
+const imageStyles = StyleSheet.create({
+  image: {
+    width: 200,
+    height: 60,
+    marginTop: -10, 
+  },
+});
+
 export const homeStyles = StyleSheet.create({
   ...containerStyles,
   ...textStyles,
   ...buttonStyles,
   ...buttonTextStyles,
-  ...iconStyles
+  ...iconStyles,
+  ...imageStyles,
 });

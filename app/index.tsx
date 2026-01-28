@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import LogoIcon from "../components/LogoIcon";
-import LogoText from "../components/LogoText/LogoText";
+import LogoText from "../components/LogoText";
 import { homeStyles } from "../styles/index.styles";
 import { useT } from "../locales/i18n";
 
@@ -19,7 +19,7 @@ export default function Index() {
       contentContainerStyle={homeStyles.container}
     >
       <LogoIcon style={[homeStyles.icon, { marginTop: isLandscape ? 10 : 50 }]} />
-      <LogoText />
+      <LogoText style={homeStyles.image} />
       <Text style={homeStyles.text}>
         {t("startPage.welcomeText")}
       </Text>
