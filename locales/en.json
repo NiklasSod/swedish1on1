@@ -10,6 +10,10 @@
     "loginTitle": "Welcome {{roleLower}}",
     "registerLink": "Create account as a {{roleLower}}",
     "registerTitle": "Register Page for {{roleLower}}",
-    "registerButton": "Register as {{roleLower}}"
+    "registerButton": "Register as {{roleLower}}",
+    "forgotPassword": "Forgot Password?"
+  },
+  "forgotPassword": {
+    "welcomeText": "Forgot your password? Enter your email to reset it."
   }
 }
