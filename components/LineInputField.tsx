@@ -10,7 +10,6 @@ export const LineInput = ({
   placeholder,
   secureTextEntry = false,
 }: LineInputProps) => {
-
   return (
     <View style={styles.container}>
       <TextInput

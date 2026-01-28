@@ -24,18 +24,27 @@ export default function AuthLayout() {
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 40}
       >
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, ...loginStyles.container }}
           keyboardShouldPersistTaps="handled"
         >
           <View style={loginStyles.innerContainer}>
-            <Text style={loginStyles.titleText}>{t("auth.loginTitle", { roleLower })}</Text>
+            <Text style={loginStyles.titleText}>
+              {t("auth.loginTitle", { roleLower })}
+            </Text>
             <LineInput placeholder={t("emailPlaceholder")} />
             <LineInput placeholder={t("passwordPlaceholder")} secureTextEntry />
             <Pressable onPress={() => router.push(`./register?role=${role}`)}>
-              <Text>{t("auth.registerLink", { roleLower })}</Text>
+              <Text style={loginStyles.registerLink}>
+                {t("auth.registerLink", { roleLower })}
+              </Text>
+            </Pressable>
+            <Pressable onPress={() => router.push("./forgotPassword")}>
+              <Text style={loginStyles.forgotPassword}>
+                {t("auth.forgotPassword")}
+              </Text>
             </Pressable>
           </View>
         </ScrollView>

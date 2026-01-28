@@ -44,9 +44,34 @@ const innerContainerStyle = StyleSheet.create({
   },
 });
 
+const registerLinkStyle = StyleSheet.create({
+  registerLink: {
+    fontSize: 16,
+    margin: 8,
+    padding: 12,
+    paddingHorizontal: 24,
+    color: COLORS.button.btnBorder,
+    // backgroundColor: COLORS.button.background,
+    textDecorationLine: "none",
+    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: COLORS.button.btnBorder,
+  },
+});
+
+const forgotPassword = StyleSheet.create({
+  forgotPassword: {
+    fontSize: 14,
+    marginTop: 8,
+    color: COLORS.colors.grayDark,
+  },
+});
+
 export const loginStyles = StyleSheet.create({
   ...imageStyles,
   ...titleTextStyle,
   ...containerStyle,
   ...innerContainerStyle,
+  ...registerLinkStyle,
+  ...forgotPassword,
 });
