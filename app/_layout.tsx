@@ -1,4 +1,3 @@
-import '../locales/i18n'; 
 import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";

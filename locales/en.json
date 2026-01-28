@@ -1,6 +1,8 @@
 {
   "student": "Student",
   "teacher": "Teacher",
+  "emailPlaceholder": "Email",
+  "passwordPlaceholder": "Password",
   "startPage": {
     "welcomeText": "Welcome.\nAre you a Student or Teacher?"
   },

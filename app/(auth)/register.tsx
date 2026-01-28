@@ -2,10 +2,10 @@ import { useLocalSearchParams } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerStyles } from "../../styles/register.styles";
-import InputField from "../../components/InputField/InputField";
-import { registerSchema, RegisterFormValues } from "../../schemas/auth";
-import { useT } from "../../locales/i18n";
+import { registerStyles } from "@/styles/register.styles";
+import InputField from "@/components/InputField/InputField";
+import { registerSchema, RegisterFormValues } from "@/schemas/auth";
+import { useT } from "@/locales/i18n";
 
 const RegisterPage = () => {
     const { role } = useLocalSearchParams();

@@ -1,9 +1,9 @@
 import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
-import LogoIcon from "../components/LogoIcon";
-import LogoText from "../components/LogoText";
-import { homeStyles } from "../styles/index.styles";
-import { useT } from "../locales/i18n";
+import LogoIcon from "@/components/LogoIcon";
+import LogoText from "@/components/LogoText";
+import { homeStyles } from "@/styles/index.styles";
+import { useT } from "@/locales/i18n";
 
 
 export default function Index() {
