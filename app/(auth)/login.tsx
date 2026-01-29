@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
+import { useState } from "react";
 import {
   Pressable,
   ScrollView,
@@ -20,6 +21,18 @@ export default function AuthLayout() {
   const t = useT("");
   const roleLower = typeof role === "string" ? role.toLowerCase() : "";
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    if (!email || !password) {
+      // TODO: Add api call to login
+      console.warn("Missing credentials");
+      return;
+    }
+    console.log("Login with", { email, password, roleLower });
+  };
+
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.background, zIndex: 0 }}>
       <LogoIcon style={loginStyles.image} />
@@ -36,8 +49,22 @@ export default function AuthLayout() {
             <Text style={loginStyles.titleText}>
               {t("auth.loginTitle", { roleLower })}
             </Text>
-            <LineInput placeholder={t("emailPlaceholder")} />
-            <LineInput placeholder={t("passwordPlaceholder")} secureTextEntry />
+            <LineInput
+              placeholder={t("emailPlaceholder")}
+              value={email}
+              onChangeText={setEmail}
+              keyboardType="email-address"
+            />
+            <LineInput
+              placeholder={t("passwordPlaceholder")}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry
+            />
+            {/* TODO create dashboard page teacher / student after login */}
+            <Pressable onPress={() => handleLogin()}>
+              <Text style={loginStyles.loginLink}>{t("auth.loginLink")}</Text>
+            </Pressable>
             <Pressable onPress={() => router.push(`./register?role=${role}`)}>
               <Text style={loginStyles.registerLink}>
                 {t("auth.registerLink", { roleLower })}
@@ -54,6 +81,3 @@ export default function AuthLayout() {
     </View>
   );
 }
-
-// add handler for login button
-// add login button

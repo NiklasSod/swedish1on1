@@ -9,6 +9,7 @@
   "auth": {
     "loginTitle": "Welcome {{roleLower}}",
     "registerLink": "Create account as a {{roleLower}}",
+    "loginLink": "Login",
     "registerTitle": "Register Page for {{roleLower}}",
     "registerButton": "Register as {{roleLower}}",
     "forgotPassword": "Forgot Password?"

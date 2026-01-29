@@ -1,17 +1,26 @@
-import { TextInput, View, TouchableOpacity } from "react-native";
+import {
+  TextInput,
+  TextInputProps,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import { styles } from "../styles/lineInputField.styles";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { COLORS } from "@/styles/colors";
 
-interface LineInputProps {
+interface LineInputProps extends TextInputProps {
   placeholder: string;
   secureTextEntry?: boolean;
+  value: string;
+  onChangeText: (text: string) => void;
 }
 
 export const LineInput = ({
   placeholder,
   secureTextEntry = false,
+  value,
+  onChangeText,
 }: LineInputProps) => {
   const [isHidden, setIsHidden] = useState(secureTextEntry);
 
@@ -22,11 +31,14 @@ export const LineInput = ({
         placeholderTextColor="#999"
         secureTextEntry={isHidden}
         style={styles.input}
+        autoCapitalize="none"
+        value={value}
+        onChangeText={onChangeText}
       />
       {secureTextEntry && (
         <TouchableOpacity
           style={styles.iconContainer}
-          onPress={() => setIsHidden((prev) => !prev)} // better approach if it works
+          onPress={() => setIsHidden((prev) => !prev)}
         >
           <Ionicons
             name={isHidden ? "eye-off-outline" : "eye-outline"}

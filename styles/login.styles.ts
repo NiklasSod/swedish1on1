@@ -51,7 +51,22 @@ const registerLinkStyle = StyleSheet.create({
     padding: 12,
     paddingHorizontal: 24,
     color: COLORS.button.btnBorder,
-    // backgroundColor: COLORS.button.background,
+    textDecorationLine: "none",
+    borderWidth: 2,
+    borderRadius: 50,
+    borderColor: COLORS.button.btnBorder,
+  },
+});
+
+const loginLinkStyle = StyleSheet.create({
+  loginLink: {
+    fontSize: 20,
+    margin: 8,
+    marginBottom: 16,
+    padding: 8,
+    paddingHorizontal: 32,
+    color: "white",
+    backgroundColor: COLORS.colors.red,
     textDecorationLine: "none",
     borderWidth: 2,
     borderRadius: 50,
@@ -73,5 +88,6 @@ export const loginStyles = StyleSheet.create({
   ...containerStyle,
   ...innerContainerStyle,
   ...registerLinkStyle,
+  ...loginLinkStyle,
   ...forgotPassword,
 });
