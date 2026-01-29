@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import { useScreenOrientation } from "@/hooks/useScreenOrientation";
 import LogoIcon from "@/components/LogoIcon";
 import { useT } from "@/locales/i18n";
 import { loginStyles } from "@/styles/login.styles";
@@ -14,6 +15,7 @@ import { COLORS } from "@/styles/colors";
 import { LineInput } from "@/components/LineInputField";
 
 export default function AuthLayout() {
+  useScreenOrientation("PORTRAIT_UP");
   const { role } = useLocalSearchParams();
   const t = useT("");
   const roleLower = typeof role === "string" ? role.toLowerCase() : "";
@@ -24,7 +26,7 @@ export default function AuthLayout() {
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 40}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 80 : 0}
       >
         <ScrollView
           contentContainerStyle={{ flexGrow: 1, ...loginStyles.container }}
