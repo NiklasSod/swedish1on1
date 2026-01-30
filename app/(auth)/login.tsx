@@ -27,6 +27,7 @@ export default function AuthLayout() {
   const handleLogin = () => {
     if (!email || !password) {
       // TODO: Add api call to login
+      // TODO: role needs to be included!
       console.warn("Missing credentials");
       return;
     }

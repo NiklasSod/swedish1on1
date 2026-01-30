@@ -8,24 +8,29 @@ import { registerSchema, RegisterFormValues } from "@/schemas/auth";
 import { useT } from "@/locales/i18n";
 
 const RegisterPage = () => {
-    const { role } = useLocalSearchParams();
-    const roleLower = typeof role === "string" ? role.toLowerCase() : "";
-    const t = useT("auth");
+  const { role } = useLocalSearchParams();
+  const roleLower = typeof role === "string" ? role.toLowerCase() : "";
+  const t = useT("auth");
 
-    const { control, handleSubmit, formState: { errors } } = useForm<RegisterFormValues>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       username: "",
       email: "",
       password: "",
       confirmPassword: "",
-    }
+    },
   });
 
   const onRegister = (data: RegisterFormValues) => {
+    // TODO: Add api call to register and include role
     console.log(`Registering ${data.username} as a ${roleLower}`, data);
   };
-  
+
   return (
     <ScrollView contentContainerStyle={registerStyles.container}>
       <Text>{t("registerTitle", { roleLower })}</Text>
@@ -36,8 +41,15 @@ const RegisterPage = () => {
         name="username"
         render={({ field: { onChange, onBlur, value } }) => (
           <View>
-            <InputField placeholder="Username" onBlur={onBlur} onChangeText={onChange} value={value} />
-            {errors.username && <Text style={{ color: 'red' }}>{errors.username.message}</Text>}
+            <InputField
+              placeholder="Username"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+            {errors.username && (
+              <Text style={{ color: "red" }}>{errors.username.message}</Text>
+            )}
           </View>
         )}
       />
@@ -48,8 +60,16 @@ const RegisterPage = () => {
         name="email"
         render={({ field: { onChange, onBlur, value } }) => (
           <View>
-            <InputField placeholder="Email" onBlur={onBlur} onChangeText={onChange} value={value} keyboardType="email-address" />
-            {errors.email && <Text style={{ color: 'red' }}>{errors.email.message}</Text>}
+            <InputField
+              placeholder="Email"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              keyboardType="email-address"
+            />
+            {errors.email && (
+              <Text style={{ color: "red" }}>{errors.email.message}</Text>
+            )}
           </View>
         )}
       />
@@ -60,15 +80,17 @@ const RegisterPage = () => {
         name="password"
         render={({ field: { onChange, onBlur, value } }) => (
           <View>
-            <InputField 
-              placeholder="Password" 
-              onBlur={onBlur} 
-              onChangeText={onChange} 
-              value={value} 
-              secureTextEntry 
+            <InputField
+              placeholder="Password"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
               autoCapitalize="none"
             />
-            {errors.password && <Text style={{ color: 'red' }}>{errors.password.message}</Text>}
+            {errors.password && (
+              <Text style={{ color: "red" }}>{errors.password.message}</Text>
+            )}
           </View>
         )}
       />
@@ -79,21 +101,27 @@ const RegisterPage = () => {
         name="confirmPassword"
         render={({ field: { onChange, onBlur, value } }) => (
           <View>
-            <InputField 
-              placeholder="Confirm Password" 
-              onBlur={onBlur} 
-              onChangeText={onChange} 
-              value={value} 
-              secureTextEntry 
+            <InputField
+              placeholder="Confirm Password"
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              secureTextEntry
               autoCapitalize="none"
             />
-            {errors.confirmPassword && <Text style={{ color: 'red' }}>{errors.confirmPassword.message}</Text>}
+            {errors.confirmPassword && (
+              <Text style={{ color: "red" }}>
+                {errors.confirmPassword.message}
+              </Text>
+            )}
           </View>
         )}
       />
 
       <Pressable onPress={handleSubmit(onRegister)}>
-        <Text style={registerStyles.buttonText}>{t("registerButton", { roleLower })}</Text>
+        <Text style={registerStyles.buttonText}>
+          {t("registerButton", { roleLower })}
+        </Text>
       </Pressable>
     </ScrollView>
   );
