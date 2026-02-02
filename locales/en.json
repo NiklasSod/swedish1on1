@@ -1,8 +1,10 @@
 {
   "student": "Student",
   "teacher": "Teacher",
+  "usernamePlaceholder": "Username",
   "emailPlaceholder": "Email",
   "passwordPlaceholder": "Password",
+  "confirmPasswordPlaceholder": "Confirm Password",
   "startPage": {
     "welcomeText": "Welcome.\nAre you a Student or Teacher?"
   },
@@ -10,8 +12,9 @@
     "loginTitle": "Welcome {{roleLower}}",
     "registerLink": "Create account as a {{roleLower}}",
     "loginLink": "Login",
-    "registerTitle": "Register Page for {{roleLower}}",
-    "registerButton": "Register as {{roleLower}}",
+    "loginInsteadLink": "Login?",
+    "registerTitle": "Register, {{roleLower}}",
+    "registerButton": "Register",
     "forgotPassword": "Forgot Password?"
   },
   "forgotPassword": {

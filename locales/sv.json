@@ -1,8 +1,10 @@
 {
   "student": "Student",
   "teacher": "Lärare",
+  "usernamePlaceholder": "Användarnamn",
   "emailPlaceholder": "Email",
   "passwordPlaceholder": "Lösenord",
+  "confirmPasswordPlaceholder": "Bekräfta lösenord",
   "startPage": {
     "welcomeText": "Välkommen.\nÄr du student eller lärare?"
   },
@@ -10,8 +12,10 @@
     "loginTitle": "Välkommen {{roleLower}}",
     "registerLink": "Skapa konto som {{roleLower}}",
     "loginLink": "Logga in",
-    "registerTitle": "Registreringssida för {{roleLower}}",
-    "registerButton": "Registrera dig som {{roleLower}}",
+    "loginInsteadLink": "Logga in istället?",
+
+    "registerTitle": "Registrering, {{roleLower}}",
+    "registerButton": "Registrera dig",
     "forgotPassword": "Glömt lösenord?"
   },
   "forgotPassword": {
