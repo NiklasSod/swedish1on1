@@ -14,6 +14,10 @@
     "loginLink": "Login",
     "loginInsteadLink": "Login?",
     "registerTitle": "Register, {{roleLower}}",
+    "roles": {
+      "teacher": "teacher",
+      "student": "student"
+    },
     "registerButton": "Register",
     "forgotPassword": "Forgot Password?"
   },

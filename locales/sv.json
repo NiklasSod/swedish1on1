@@ -13,8 +13,11 @@
     "registerLink": "Skapa konto som {{roleLower}}",
     "loginLink": "Logga in",
     "loginInsteadLink": "Logga in istället?",
-
     "registerTitle": "Registrering, {{roleLower}}",
+    "roles": {
+      "teacher": "lärare",
+      "student": "elev"
+    },
     "registerButton": "Registrera dig",
     "forgotPassword": "Glömt lösenord?"
   },
