@@ -17,9 +17,12 @@ import { LineInput } from "@/components/LineInputField";
 
 export default function AuthLayout() {
   useScreenOrientation("PORTRAIT_UP");
-  const { role } = useLocalSearchParams();
+  const { role } = useLocalSearchParams<{ role: string | string[] }>();
+  const roleString = Array.isArray(role) ? role[0] : role;
+  const roleLower = roleString?.toLowerCase() ?? "";
   const t = useT("");
-  const roleLower = typeof role === "string" ? role.toLowerCase() : "";
+
+  console.log("roleLower", roleLower);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,7 +30,7 @@ export default function AuthLayout() {
   const handleLogin = () => {
     if (!email || !password) {
       // TODO: Add api call to login
-      // TODO: role needs to be included!
+      // TODO: roleString needs to be included!
       console.warn("Missing credentials");
       return;
     }
@@ -48,7 +51,9 @@ export default function AuthLayout() {
         >
           <View style={loginStyles.innerContainer}>
             <Text style={loginStyles.titleText}>
-              {t("auth.loginTitle", { roleLower })}
+              {t("auth.loginTitle", {
+                roleLower: t(`auth.roles.${roleLower}`),
+              })}
             </Text>
             <LineInput
               placeholder={t("emailPlaceholder")}
@@ -66,7 +71,9 @@ export default function AuthLayout() {
             <Pressable onPress={() => handleLogin()}>
               <Text style={loginStyles.loginLink}>{t("auth.loginLink")}</Text>
             </Pressable>
-            <Pressable onPress={() => router.push(`./register?role=${role}`)}>
+            <Pressable
+              onPress={() => router.push(`./register?role=${roleString}`)}
+            >
               <Text style={loginStyles.registerLink}>
                 {t("auth.registerLink", { roleLower })}
               </Text>

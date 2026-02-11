@@ -1,10 +1,15 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import LogoIcon from "@/components/LogoIcon";
 import LogoText from "@/components/LogoText";
 import { homeStyles } from "@/styles/index.styles";
 import { useT } from "@/locales/i18n";
-
 
 export default function Index() {
   const router = useRouter();
@@ -18,16 +23,16 @@ export default function Index() {
       scrollEnabled={true}
       contentContainerStyle={homeStyles.container}
     >
-      <LogoIcon style={[homeStyles.icon, { marginTop: isLandscape ? 10 : 50 }]} />
+      <LogoIcon
+        style={[homeStyles.icon, { marginTop: isLandscape ? 10 : 50 }]}
+      />
       <LogoText style={homeStyles.image} />
-      <Text style={homeStyles.text}>
-        {t("startPage.welcomeText")}
-      </Text>
+      <Text style={homeStyles.text}>{t("startPage.welcomeText")}</Text>
       <View style={homeStyles.button}>
-        <Pressable onPress={() => router.push(`./(auth)/login?role=${t("student")}`)}>
+        <Pressable onPress={() => router.push(`./(auth)/login?role=student`)}>
           <Text style={homeStyles.buttonText}>{t("student")}</Text>
         </Pressable>
-        <Pressable onPress={() => router.push(`./(auth)/login?role=${t("teacher")}`)}>
+        <Pressable onPress={() => router.push(`./(auth)/login?role=teacher`)}>
           <Text style={homeStyles.buttonText}>{t("teacher")}</Text>
         </Pressable>
       </View>

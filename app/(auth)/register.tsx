@@ -21,12 +21,12 @@ import { useScreenOrientation } from "@/hooks/useScreenOrientation";
 const RegisterPage = () => {
   useScreenOrientation("PORTRAIT_UP");
 
-  const apiDevUrl = process.env.API_URL_DEV;
-  const apiProdUrl = process.env.API_URL_PROD;
+  const apiDevUrl = process.env.EXPO_PUBLIC_API_URL_DEV;
+  const apiProdUrl = process.env.EXPO_PUBLIC_API_URL_PROD;
   const BASE_URL = __DEV__ ? apiDevUrl : apiProdUrl;
-  const { role } = useLocalSearchParams();
-  // const roleLower = typeof role === "string" ? role.toLowerCase() : "";
-  const roleLower = "teacher"; // Temporary hardcode for testing // TODO: Fix better controll on roleLower
+  const { role } = useLocalSearchParams<{ role: string | string[] }>();
+  const roleString = Array.isArray(role) ? role[0] : role;
+  const roleLower = roleString?.toLowerCase() ?? "";
   const t = useT("");
 
   const {
@@ -40,13 +40,13 @@ const RegisterPage = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      role: roleLower as "student" | "teacher",
     },
   });
 
   const onRegister = (data: RegisterFormValues) => {
-    // TODO: Add API call + include role
-    // console.log("Register", { ...data, roleLower });
-    fetch("https://unshammed-dean-creakily.ngrok-free.dev/auth/register", {
+    console.log("Registering with", data);
+    fetch(`${BASE_URL}/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,9 @@ const RegisterPage = () => {
         >
           <View style={loginStyles.innerContainer}>
             <Text style={loginStyles.titleText}>
-              {t("auth.registerTitle", { roleLower })}
+              {t("auth.registerTitle", {
+                roleLower: t(`auth.roles.${roleLower}`),
+              })}
             </Text>
 
             {/* Username */}
@@ -169,7 +171,9 @@ const RegisterPage = () => {
               </Text>
             </Pressable>
 
-            <Pressable onPress={() => router.push("./login")}>
+            <Pressable
+              onPress={() => router.push(`./login?role=${roleString}`)}
+            >
               <Text style={loginStyles.forgotPassword}>
                 {t("auth.loginInsteadLink")}
               </Text>
