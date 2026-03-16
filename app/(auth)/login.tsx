@@ -17,24 +17,38 @@ import { LineInput } from "@/components/LineInputField";
 
 export default function AuthLayout() {
   useScreenOrientation("PORTRAIT_UP");
+
+  const apiDevUrl = process.env.EXPO_PUBLIC_API_URL_DEV;
+  const apiProdUrl = process.env.EXPO_PUBLIC_API_URL_PROD;
+  const BASE_URL = __DEV__ ? apiDevUrl : apiProdUrl;
+
   const { role } = useLocalSearchParams<{ role: string | string[] }>();
   const roleString = Array.isArray(role) ? role[0] : role;
   const roleLower = roleString?.toLowerCase() ?? "";
   const t = useT("");
 
-  console.log("roleLower", roleLower);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (!email || !password) {
-      // TODO: Add api call to login
-      // TODO: roleString needs to be included!
-      console.warn("Missing credentials");
-      return;
-    }
-    console.log("Login with", { email, password, roleLower });
+    const data = { email, password };
+    console.log("Logging in with", data);
+    fetch(`${BASE_URL}/auth/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle successful registration (e.g., navigate to login)
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle registration error
+      });
   };
 
   return (
